@@ -1,0 +1,17 @@
+{
+  "name": "GTA VI Garage Radar",
+  "short_name": "Garage Radar",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#091321",
+  "theme_color": "#0c1527",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}
