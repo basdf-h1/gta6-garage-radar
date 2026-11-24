@@ -26,3 +26,5 @@ Las páginas enlazadas pueden actualizarse. No se usa su cartografía como image
 - Referencias: https://vicecitydb.org/es/collectibles/standout-vehicles y https://www.gtabase.com/gta-6/map/?feature=standout-vehicle
 - No se han verificado en la partida del usuario: tracker, registro con Moses, respawn y rentabilidad por minuto.
 - El croquis esquemático no es un mapa real, GPS ni rutas navegables.
+
+- Actualización manual de GitHub Pages — Garage Radar v0.5
