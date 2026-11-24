@@ -1,0 +1,31 @@
+{
+  "id": "DISC-003",
+  "title": "How to find Dom's Charger · Fast & Furious",
+  "source": {
+    "platform": "instagram",
+    "creator": "wiildeyy",
+    "original_url": null,
+    "source_status": "user_uploaded_screenshot",
+    "screenshot": "IMG_0570.jpeg",
+    "status": "url_pending"
+  },
+  "game": "GTA VI",
+  "vehicle_reported": "Dom's Charger lookalike / Driveshaft Gauntlet",
+  "region": "Grayson, by San Malo Bay, Leonida",
+  "steps_in_screenshot": [
+    "Mark Grayson near San Malo Bay",
+    "Find the open-sided wooden shed; vehicle parked beneath roof",
+    "Use Slim Jim interaction at driver door",
+    "Repaint black"
+  ],
+  "supporting_public_guides": [
+    "https://beebom.com/gta-6-doms-charger-location/amp/",
+    "https://gtascoop.com/guides/gta-6-dom-toretto-charger/"
+  ],
+  "verification_status": "unverified",
+  "map_id": "leonida",
+  "coordinates": null,
+  "precision": "region_known_exact_marker_not_calibrated",
+  "map_behavior": "Queue for user manual placement; do not fabricate x/y",
+  "supabase_status": "not_inserted"
+}
