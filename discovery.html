@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c1527"><title>Discovery AI · Garage Radar v0.9</title>
+<style>
+:root{font:16px system-ui,-apple-system,sans-serif;color:#e9f4fc;background:#091321}*{box-sizing:border-box}body{margin:0 auto;padding:18px 15px 75px;max-width:880px}h1{font-size:30px;margin:8px 0}h2{font-size:20px;margin:5px 0 12px}h3{font-size:16px;margin:5px 0}p{color:#bbcedb;line-height:1.48}a{color:#91e8d0}.eyebrow{font-size:12px;letter-spacing:.8px;color:#91e8d0;font-weight:700}.panel{background:#142b3e;border:1px solid #35546c;border-radius:16px;margin:13px 0;padding:15px}.notice{background:#352f25;border:1px solid #756343;border-radius:10px;padding:12px;color:#ffdfaf;font-size:13px}.small{font-size:12px;color:#a9bfd0}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.row>*{flex:1 1 140px}input,select,textarea,button{font:inherit;background:#1d394f;color:#f0f8ff;border:1px solid #507186;border-radius:10px;padding:11px;max-width:100%}input,textarea,select{width:100%;margin:5px 0 9px}textarea{resize:vertical}label{display:block;font-size:13px;margin-top:11px;color:#bcd0df}button{cursor:pointer}button.primary{background:#92e8d2;color:#10332e;border-color:#92e8d2;font-weight:750}button:disabled{opacity:.5}.hidden{display:none}.item{padding:13px 0;border-top:1px solid #314e60}.item:first-child{border-top:0}.item strong{font-size:15px}.item p{font-size:13px;margin:5px 0 9px}.tag{font-size:11px;background:#324c5c;padding:4px 8px;border-radius:6px}.tag.warning{color:#f9d39b}.pill{display:inline-block;font-size:11px;color:#c1ebdc;background:#21483e;border-radius:6px;padding:4px 7px}.tools{display:flex;gap:7px;flex-wrap:wrap}.tools button,.tools select{flex:1 1 130px;font-size:13px;padding:9px;margin:0}.count{font-size:12px;color:#aee8d7}.card{background:#102638;padding:11px;border-radius:10px;margin:9px 0}#status{white-space:pre-wrap}small{font-size:12px}
+</style></head><body>
+<a href="./">‹ Garage Radar</a> · <a href="./mapa-v08.html">🗺️ Mapa</a> · <a href="./nube.html">☁️ Nube</a>
+<p class="eyebrow">GARAGE RADAR · DISCOVERY AI v0.9</p><h1>🔎 Descubrimientos</h1><p>Guarda enlaces de publicaciones, clasifica hallazgos y crea tu lista de cosas por hacer. Cada fuente mantiene su trazabilidad; nada se añade al mapa sin tu revisión.</p>
+<div class="notice">Esta versión <b>no descarga ni analiza automáticamente Reels</b>. Puedes registrar enlaces de Instagram y convertir la evidencia que revisaste en hallazgos y tareas. El análisis multimodal queda para una siguiente versión.</div>
+<section class="panel"><h2>1. Tu cuenta privada</h2><p id="session">Comprobando sesión…</p><div id="login"><label for="email">Correo electrónico</label><input id="email" type="email" autocomplete="email" placeholder="tu-correo@ejemplo.com"><button id="magic" class="primary">Enviar enlace de acceso</button><p class="small">Se utiliza la misma cuenta de Supabase que en Garaje en la nube. Si el correo llega a otra app, ábrelo en el mismo navegador que usas para Discovery.</p></div><button id="logout" class="hidden">Cerrar sesión</button></section>
+<div id="workspace" class="hidden">
+<section class="panel"><h2>2. Importar caso AfrozPlays</h2><p>DISC-002 · <strong>36 Secret Vehicle Locations</strong> · <a href="https://www.instagram.com/p/DgCK6zBETx8/" target="_blank" rel="noopener noreferrer">Instagram original</a></p><p class="small">Se importan la fuente y 12 nombres legibles de la captura compartida. El creador afirma tener 36 ubicaciones, pero NO disponemos de coordenadas verificadas ni de una transcripción completa. Todo se marca «Sin verificar».</p><button class="primary" id="seed">Importar 12 candidatos revisables a mi cuenta</button></section>
+<section class="panel"><h2>3. Registrar publicación</h2><label for="sourceUrl">Enlace original</label><input id="sourceUrl" type="url" placeholder="https://www.instagram.com/reel/..."><label for="sourceTitle">Título</label><input id="sourceTitle" placeholder="Ej. Camioneta oculta en Port Gellhorn"><div class="row"><div><label for="creator">Creador</label><input id="creator" placeholder="@cuenta"></div><div><label for="platform">Plataforma</label><select id="platform"><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option><option value="other">Otra</option></select></div></div><label for="sourceNotes">Descripción / evidencia aportada</label><textarea id="sourceNotes" rows="2" maxlength="2000" placeholder="Qué viste, minuto del video, advertencias y detalles"></textarea><button id="addSource" class="primary">Guardar fuente</button></section>
+<section class="panel"><h2>4. Fuentes y hallazgos</h2><p id="totals" class="count">Sin consultar.</p><div id="sources"></div></section>
+<section class="panel"><h2>5. Mis actividades por hacer</h2><p class="small">Puedes agregar tareas a partir de cualquier hallazgo. Completar una tarea no convierte automáticamente la ubicación en verificada.</p><div id="tasks"></div><div class="card"><h3>Crear tarea manual</h3><input id="taskTitle" placeholder="Ej. Revisar taller de Moses"><input id="taskZone" placeholder="Zona (opcional)"><div class="row"><select id="taskPriority"><option value="high">Alta</option><option value="medium" selected>Media</option><option value="low">Baja</option></select><button id="manualTask" class="primary">Agregar tarea</button></div></div></section>
+</div><div class="panel small" id="status" role="status">Preparando conexión…</div>
+<script type="module">
+import {createClient} from "https://esm.sh/@supabase/supabase-js@2";
+const URL_BASE="https://iaoqvdxnvocxjgbpyeiz.supabase.co",PUBLIC_KEY="sb_publishable_l736Z9wR-dpe0LMmE7MhCA_-SRoOxdP";
+const db=createClient(URL_BASE,PUBLIC_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}),$=id=>document.getElementById(id);
+let user=null,sources=[],findings=[],tasks=[];
+const cases=[["15","Canis Crawler '82","4x4"],["16","Yosemite 1500","Camioneta"],["17","Hellion","4x4"],["20","Infernus","Deportivo"],["21","Tempesta","Superdeportivo"],["22","Toros","SUV lujo"],["24","Gauntlet Hellfire","Muscle"],["26","Riata '70","4x4"],["30","Mamba GT","Deportivo"],["34","Paragon","Lujo"],["35","Growler","Deportivo"],["36","Zorrusso","Superdeportivo"]];
+function msg(s,bad=false){$("status").textContent=s;$("status").style.color=bad?"#ffb2aa":"#9ae8d3"}
+function el(tag,text,cl){const x=document.createElement(tag);if(text!==undefined)x.textContent=String(text);if(cl)x.className=cl;return x}
+function btn(label,click,primary=false){const x=el("button",label);if(primary)x.className="primary";x.onclick=click;return x}
+function fail(e){msg("No se pudo completar: "+(e?.message||String(e)),true)}
+async function run(f){try{msg("Procesando…");await f()}catch(e){fail(e)}}
+function checked(){if(!user)throw Error("Inicia sesión antes de guardar.") }
+async function refresh(){
+ checked();const [s,f,t]=await Promise.all([
+  db.from("discovery_sources").select("*").eq("user_id",user.id).order("created_at",{ascending:false}).limit(300),
+  db.from("discovery_findings").select("*").eq("user_id",user.id).order("created_at",{ascending:false}).limit(500),
+  db.from("user_tasks").select("*").eq("user_id",user.id).order("created_at",{ascending:false}).limit(300)
+ ]);for(const q of [s,f,t])if(q.error)throw q.error;
+ sources=s.data||[];findings=f.data||[];tasks=t.data||[];render();
+ msg("Datos sincronizados con Supabase. Tus hallazgos y pendientes son privados.")
+}
+function render(){
+ $("totals").textContent=sources.length+" fuentes · "+findings.length+" hallazgos · "+tasks.length+" tareas";
+ const root=$("sources");root.replaceChildren();
+ if(!sources.length)root.append(el("p","Aún no tienes fuentes. Importa el caso AfrozPlays o añade un enlace."));
+ for(const s of sources){
+  const card=el("div",undefined,"item");
+  const h=el("h3",s.title||s.source_url);card.append(h);
+  const p=el("p",(s.creator||"Autor no indicado")+" · "+s.platform+" · "+s.status);card.append(p);
+  const link=el("a","Abrir fuente original ↗");link.href=s.source_url;link.target="_blank";link.rel="noopener noreferrer";card.append(link);
+  if(s.notes)card.append(el("p",s.notes.slice(0,350),"small"));
+  const fg=findings.filter(x=>x.source_id===s.id);card.append(el("p",fg.length+" hallazgos asociados","count"));
+  const list=el("div");
+  for(const f of fg){
+   const row=el("div",undefined,"card"),title=el("strong",(f.external_number?"#"+f.external_number+" · ":"")+f.item_label);row.append(title);
+   row.append(el("p","Estado: "+f.status+" · "+f.category+(f.description?" · "+f.description:""),"small"));
+   const tools=el("div",undefined,"tools");
+   const selector=el("select");
+   for(const [value,label] of [["unverified","Sin verificar"],["review","En revisión"],["approved","Revisado / aprobado"],["discarded","Descartado"]]){const o=el("option",label);o.value=value;o.selected=f.status===value;selector.append(o)}
+   selector.onchange=()=>run(async()=>{const {error}=await db.from("discovery_findings").update({status:selector.value}).eq("id",f.id).eq("user_id",user.id);if(error)throw error;await refresh()});
+   tools.append(selector);
+   tools.append(btn("＋ Por hacer",()=>run(async()=>{if(tasks.some(t=>t.finding_id===f.id&&t.status!=="discarded"))throw Error("Ya existe una tarea activa para este hallazgo.");const {error}=await db.from("user_tasks").insert({user_id:user.id,finding_id:f.id,title:"Investigar: "+f.item_label,description:"Fuente: "+s.source_url+". Ubicación no verificada.",priority:"high",status:"todo"});if(error)throw error;await refresh()})));
+   row.append(tools);list.append(row);
+  }
+  card.append(list);
+  const details=el("details"),sum=el("summary","Agregar hallazgo manual a esta fuente");details.append(sum);
+  const label=el("input");label.placeholder="Nombre del vehículo o actividad";label.maxLength=200;
+  const desc=el("textarea");desc.placeholder="Evidencia, ubicación reportada, advertencias";desc.rows=2;
+  details.append(label,desc,btn("Guardar hallazgo",()=>run(async()=>{const name=label.value.trim();if(!name)throw Error("Escribe el nombre.");const {error}=await db.from("discovery_findings").insert({user_id:user.id,source_id:s.id,item_label:name,description:desc.value.slice(0,2000),category:"vehicle",status:"unverified"});if(error)throw error;await refresh()}),true));card.append(details);root.append(card)
+ }
+ const taskRoot=$("tasks");taskRoot.replaceChildren();
+ if(!tasks.length)taskRoot.append(el("p","Todavía no tienes tareas."));
+ for(const t of tasks){const row=el("div",undefined,"item");row.append(el("strong",t.title));
+ row.append(el("p",(t.zone?t.zone+" · ":"")+"Prioridad "+t.priority+" · "+t.status,"small"));const controls=el("div",undefined,"tools"),sel=el("select");
+ for(const [v,label] of [["todo","Por hacer"],["doing","En proceso"],["done","Completada"],["discarded","Descartada"]]){let o=el("option",label);o.value=v;o.selected=t.status===v;sel.append(o)}
+ sel.onchange=()=>run(async()=>{const {error}=await db.from("user_tasks").update({status:sel.value,updated_at:new Date().toISOString()}).eq("id",t.id).eq("user_id",user.id);if(error)throw error;await refresh()});controls.append(sel);row.append(controls);taskRoot.append(row)}
+}
+async function sessionUI(){const {data:{user:u},error}=await db.auth.getUser();user=error?null:u;$("session").textContent=user?"Conectado: "+user.email:"Sin sesión activa";$("login").classList.toggle("hidden",!!user);$("logout").classList.toggle("hidden",!user);$("workspace").classList.toggle("hidden",!user);if(user)await refresh();else msg("Inicia sesión para guardar tus descubrimientos y tareas en Supabase.")}
+$("magic").onclick=()=>run(async()=>{const email=$("email").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))throw Error("Correo inválido.");const {error}=await db.auth.signInWithOtp({email,options:{emailRedirectTo:"https://basdf-h1.github.io/gta6-garage-radar/discovery.html"}});if(error)throw error;msg("Enlace enviado. Autoriza también discovery.html en Authentication → URL Configuration de Supabase.")});
+$("logout").onclick=()=>run(async()=>{const {error}=await db.auth.signOut();if(error)throw error;await sessionUI()});
+$("seed").onclick=()=>run(async()=>{
+ checked();const url="https://www.instagram.com/p/DgCK6zBETx8/";
+ let s=sources.find(x=>x.source_url===url);
+ if(!s){const {data,error}=await db.from("discovery_sources").insert({user_id:user.id,source_url:url,platform:"instagram",creator:"afrozplays",title:"DISC-002 · 36 Secret Vehicle Locations",notes:"Según captura compartida. El autor anuncia 36 puntos; importamos solo 12 nombres legibles. Sin coordenadas, sin verificación."}).select().single();if(error)throw error;s=data}
+ const rows=cases.map(([n,name,type])=>({user_id:user.id,source_id:s.id,item_label:name,external_number:Number(n),category:"vehicle",description:type+" · ubicación por contrastar",status:"unverified",evidence_note:"Captura aportada por usuario; afirmación comunitaria no verificada."}));
+ const {error}=await db.from("discovery_findings").upsert(rows,{onConflict:"source_id,item_label",ignoreDuplicates:true});if(error)throw error;await refresh()
+});
+$("addSource").onclick=()=>run(async()=>{checked();const raw=$("sourceUrl").value.trim();let url;try{url=new URL(raw);if(url.protocol!=="https:"||!["www.instagram.com","instagram.com","www.youtube.com","youtube.com","youtu.be","www.tiktok.com","tiktok.com"].includes(url.hostname)&&$("platform").value!=="other")throw Error("Dominio no compatible");url.hash="";url.search="";}catch{throw Error("Introduce un enlace HTTPS válido de la publicación.")}const s={user_id:user.id,source_url:url.toString(),title:$("sourceTitle").value.trim().slice(0,200),platform:$("platform").value,creator:$("creator").value.trim().slice(0,100),notes:$("sourceNotes").value.trim().slice(0,2000)};const {error}=await db.from("discovery_sources").insert(s);if(error)throw error;$("sourceUrl").value="";$("sourceTitle").value="";$("sourceNotes").value="";await refresh()});
+$("manualTask").onclick=()=>run(async()=>{checked();const title=$("taskTitle").value.trim();if(!title)throw Error("Escribe una tarea.");const {error}=await db.from("user_tasks").insert({user_id:user.id,title:title.slice(0,200),zone:$("taskZone").value.trim().slice(0,200),priority:$("taskPriority").value,status:"todo"});if(error)throw error;$("taskTitle").value="";await refresh()});
+db.auth.onAuthStateChange(()=>{setTimeout(()=>sessionUI().catch(fail),0)});
+sessionUI().catch(fail);
+</script></body></html>
