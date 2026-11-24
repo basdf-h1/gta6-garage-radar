@@ -18,3 +18,11 @@ Conserva el mismo `localStorage` (`garage-radar-v01`) para mantener tu progreso 
 GTABase — https://www.gtabase.com/gta-6/map/?feature=standout-vehicle ; https://www.gtabase.com/gta-6/map/?feature=vehicle-spawn ; https://www.gtabase.com/gta-6/map/?feature=vehicle-request
 
 Las páginas enlazadas pueden actualizarse. No se usa su cartografía como imagen embebida. No afiliado a Rockstar Games.
+
+## Revisión de fuentes — 23 de noviembre de 2026
+- La Cascara Motel: Firebug Dominator, al este frente al motel (varias guías).
+- June Warehouse: Truth & Justice Caracara, al este del garaje principal, cerca de US-9 y Glenwood Ave.
+- Brooks Boatworks: Smuggler Caracara, edificio verde junto al muelle norte.
+- Referencias: https://vicecitydb.org/es/collectibles/standout-vehicles y https://www.gtabase.com/gta-6/map/?feature=standout-vehicle
+- No se han verificado en la partida del usuario: tracker, registro con Moses, respawn y rentabilidad por minuto.
+- El croquis esquemático no es un mapa real, GPS ni rutas navegables.
