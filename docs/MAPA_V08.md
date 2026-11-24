@@ -26,3 +26,12 @@ Solo subir a `assets/mapa-leonida-autorizado.webp` **después** de verificar exp
 - La biblioteca Leaflet se carga desde un CDN; requiere conexión al primer uso.
 - v0.9: catálogo `map_locations`, `vehicle_locations`, `location_reports` con RLS y reconciliación por usuario; exigir evidencia antes de marcar como verificado.
 - No crear claves secretas en el frontend ni asumir permiso para republicar mapas externos.
+
+## v0.8.1 · Mapas comunitarios incorporados
+- Vista Leonida: https://guidedistrict.com/press/gta6-map-leonida.jpg (2875 × 4475)
+- Vista Port Gellhorn: https://guidedistrict.com/press/gta6-map-port-gellhorn.jpg (1920 × 1200)
+- Fuente y permiso: https://guidedistrict.com/en/press/ · CC BY 4.0 · atribución visible en la interfaz, incluyendo reconstrucción comunitaria.
+- No son cartografía oficial Rockstar. Las imágenes se sirven desde GuideDistrict; requieren conectividad y disponibilidad del sitio externo.
+- Marcadores con `map_id` por imagen; los existentes sin `map_id` se consideran `custom` para conservar posición original.
+- Coordenadas normalizadas y orientación vertical corregida (top = Y 0, bottom = Y 1), la proporción del mapa se conserva mediante sus dimensiones.
+- No se han añadido posiciones inventadas ni se han subido imágenes a Supabase. Guardado local y exportación JSON.
