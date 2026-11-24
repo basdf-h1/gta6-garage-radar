@@ -1,0 +1,96 @@
+{
+  "id": "DISC-002",
+  "title": "36 Secret Vehicle Locations in GTA VI",
+  "source": {
+    "platform": "instagram",
+    "creator": "afrozplays",
+    "original_url": "https://www.instagram.com/p/DgCK6zBETx8/",
+    "shared_url": "https://www.instagram.com/p/DgCK6zBETx8/?hvrq=NzB4bnU1dmhldm00",
+    "shortcode": "DgCK6zBETx8",
+    "content_type": "carousel_post",
+    "access_note": "La URL de Instagram no permitió recuperar la publicación directamente; datos basados exclusivamente en la captura compartida por el usuario."
+  },
+  "screenshot_observations": {
+    "map_label": "State of Leonida",
+    "headline": "SECRET VEHICLES",
+    "numbered_locations_claimed": 36,
+    "marked_points_claimed": 36,
+    "creator_note": "EMERUS / THRAX: cheat only, post-story; 36 marked spots - 11 are Randy's list.",
+    "legend": [
+      "Randy's Wish List (key donor steal)",
+      "Moses Drop-Off (chapter 2)",
+      "Ultimate / pre-order exclusive",
+      "Wyman Wreck / hidden garage"
+    ],
+    "limits": "No se han extraído coordenadas georreferenciadas, ni verificadas las condiciones o tasas de aparición."
+  },
+  "readable_candidates": [
+    {
+      "number": 15,
+      "name": "Canis Crawler '82",
+      "category": "4x4"
+    },
+    {
+      "number": 16,
+      "name": "Yosemite 1500",
+      "category": "pickup"
+    },
+    {
+      "number": 17,
+      "name": "Hellion",
+      "category": "4x4"
+    },
+    {
+      "number": 20,
+      "name": "Infernus",
+      "category": "sports"
+    },
+    {
+      "number": 21,
+      "name": "Tempesta",
+      "category": "supercar"
+    },
+    {
+      "number": 22,
+      "name": "Toros",
+      "category": "luxury_suv"
+    },
+    {
+      "number": 24,
+      "name": "Gauntlet Hellfire",
+      "category": "muscle"
+    },
+    {
+      "number": 26,
+      "name": "Riata '70",
+      "category": "4x4"
+    },
+    {
+      "number": 30,
+      "name": "Mamba GT",
+      "category": "sports"
+    },
+    {
+      "number": 34,
+      "name": "Paragon",
+      "category": "luxury"
+    },
+    {
+      "number": 35,
+      "name": "Growler",
+      "category": "sports"
+    },
+    {
+      "number": 36,
+      "name": "Zorrusso",
+      "category": "supercar"
+    }
+  ],
+  "game": "GTA VI",
+  "source_status": "user_supplied_screenshot",
+  "verification_status": "unverified",
+  "coordinates_status": "not_calibrated",
+  "publication_status": "candidate_only_not_published_to_map",
+  "next_action": "Review each numbered marker against appropriately licensed game map, verify details in gameplay or independent evidence, and then explicitly approve import into Supabase.",
+  "supabase_status": "not_inserted"
+}
