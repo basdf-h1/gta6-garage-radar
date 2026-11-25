@@ -1,0 +1,20 @@
+{
+  "id": "DISC-011",
+  "source": "Instagram @millzaatv",
+  "source_url": null,
+  "category": "loot",
+  "title": "Botín temprano de Grassrivers",
+  "zone": "Grassrivers / Watson Bay",
+  "description": "Marcador de destino sobre carretera local al suroeste de Grassrivers, al norte de Watson Bay, cerca de la costa. La distancia visible de 92 ft corresponde al destino mostrado, no a una coordenada.",
+  "status": "reported",
+  "loot_contents": null,
+  "loot_value": null,
+  "chapter": null,
+  "map_reference": {
+    "map_id": "master",
+    "x": 0.4513399153737659,
+    "y": 0.6715575620767494,
+    "precision": "regional",
+    "note": "Referencia de la localidad Grassrivers en el mapa maestro; no es el punto exacto del botín."
+  }
+}
