@@ -38,3 +38,6 @@ P2 v2.0 Automatización modular: Scout, Cartographer, Verifier, Collector, Strat
 100% de registros migrados reconciliados; 100% de puntos con map_id y fuente o declaración del jugador; cero ubicaciones inventadas; cero secretos en frontend; cero accesos cruzados entre usuarios en pruebas; flujo móvil de consulta y registro comprobado. Son metas, no mediciones realizadas.
 ## Siguiente acción
 Auditar esquemas existentes y contenido de las páginas, preparar migración y datos bootstrap reproducibles, verificar Supabase con el usuario. No añadir más páginas aisladas hasta completar consolidación.
+
+## v0.15 — Strategic Memory
+Implemented explicit private strategy read/publish/restore with optimistic revision checks, local recovery snapshot, and context JSON export/copy. Apply migration 005_strategy.sql in Supabase SQL Editor; independent of migration 004. Authenticated user RLS. No direct assistant API, automated research, or automatic cross-device merge. Test signed-in read/write, stale revision rejection, restore and two-user isolation before calling live. Legacy data unchanged.
