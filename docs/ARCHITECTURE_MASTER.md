@@ -1,3 +1,8 @@
+# Decisión de producto vigente — 26 noviembre 2026
+El alcance estratégico sustituye el roadmap cartográfico anterior. No replicar mapas ni enciclopedias externas. Radar AI asesora en el chat, investiga fuentes actuales al recibir solicitudes, cuestiona hipótesis y prioriza tiempo, disfrute, colección y rendimiento observado. No afirmar verificación sin evidencia; separar reportes, corroboración y pruebas personales. La aplicación conserva objetivos, contexto de sesión, resultados y enlaces a fuentes; no tiene IA integrada ni acceso directo del asistente a Supabase. v0.14 implementa panel local de estrategia y exportación; siguientes prioridades: persistencia privada, integración autorizada, reconciliación de datos, pruebas móviles. Conservar módulos históricos sin priorizar su expansión.
+
+---
+
 # Garage Radar — arquitectura maestra y contrato operativo
 ## Objetivo
 Copiloto personal de GTA VI para PS5, orientado a colección, exploración, actividades y aprendizaje. Evitar spoilers más allá del progreso declarado. La interfaz es la referencia del jugador; el asistente investiga, estructura, verifica y actualiza los datos mediante accesos autorizados.
