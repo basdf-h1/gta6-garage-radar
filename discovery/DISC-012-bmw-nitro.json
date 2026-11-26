@@ -1,0 +1,16 @@
+{
+  "id": "DISC-012",
+  "title": "BMW con nitro",
+  "source": "Instagram @battlefieldbosh",
+  "source_url": null,
+  "status": "reported",
+  "category": "vehicle",
+  "zone": null,
+  "description": "Marcador junto a camino curvo al oeste de autopista norte-sur, al norte de intercambiador, zona costera al oeste. Modelo, aparición y nitro no verificados.",
+  "task": {
+    "date": "2026-11-26",
+    "priority": "high",
+    "status": "todo",
+    "objective": "Encontrar, comprobar nitro y conservar si es posible"
+  }
+}
