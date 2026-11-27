@@ -1,0 +1,69 @@
+{
+  "id": "DISC-013",
+  "source": "Instagram @slamflush",
+  "source_url": null,
+  "reference": "https://alcasthq.com/gta-6-standout-vehicles/",
+  "checked_on": "2026-11-26",
+  "items": [
+    {
+      "id": "andrew_thrax",
+      "title": "Andrew Node’s Thrax",
+      "speed_reported": 9.2,
+      "zone": "Starfish Island",
+      "note": "Residencia de lujo; guía coincide.",
+      "status": "partially_corrobated",
+      "chapter": null,
+      "sale_price": null
+    },
+    {
+      "id": "seaspray_emerus",
+      "title": "Seaspray Emerus",
+      "speed_reported": 8.9,
+      "zone": "Capri Garage",
+      "note": "Garaje en Capri; guía coincide.",
+      "status": "partially_corrobated",
+      "chapter": null,
+      "sale_price": null
+    },
+    {
+      "id": "honeycomb_emerus",
+      "title": "Honeycomb Emerus",
+      "speed_reported": 8.9,
+      "zone": "Dolos Car Rental",
+      "note": "Dolos Exotic Car Rental; guía coincide.",
+      "status": "partially_corrobated",
+      "chapter": null,
+      "sale_price": null
+    },
+    {
+      "id": "black_widow_emerus",
+      "title": "Black Widow Emerus",
+      "speed_reported": 8.9,
+      "zone": "Port Vice City",
+      "note": "Contenedor de carga según guía; confirmar herramienta.",
+      "status": "partially_corrobated",
+      "chapter": null,
+      "sale_price": null
+    },
+    {
+      "id": "thrax",
+      "title": "Thrax",
+      "speed_reported": 8.7,
+      "zone": "Hamlet",
+      "note": "Punto de aparición no corroborado.",
+      "status": "reported",
+      "chapter": null,
+      "sale_price": null
+    },
+    {
+      "id": "status_rsx",
+      "title": "Status RSX",
+      "speed_reported": 8.7,
+      "zone": "Gellhorn Raceway",
+      "note": "Guía indica camión de recuperación en Port Gellhorn; punto exacto pendiente.",
+      "status": "partially_corrobated",
+      "chapter": null,
+      "sale_price": null
+    }
+  ]
+}
